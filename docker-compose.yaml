@@ -1,0 +1,10 @@
+services:
+  fan-controller:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - ./data:/data
+      - ./config.yaml:/config/config.yaml:ro
+      - /usr/bin/racadm:/usr/bin/racadm:ro
+    restart: unless-stopped
