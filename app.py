@@ -3,6 +3,14 @@ import time
 import requests
 import subprocess
 import yaml
+import logging
+
+# ===== LOGGING CONFIG =====
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 # ===== CONFIG FROM ENV =====
 IDRAC = os.getenv("IDRAC_HOST")
@@ -46,12 +54,12 @@ def set_offset(val):
         )
 
         if result.returncode == 0 and "Object value modified successfully" in result.stdout:
-            print(f"OK offset={val}")
+            logger.info(f"OK offset={val}")
         else:
-            print(f"ERROR offset={val} result={result.stdout} {result.stderr}")
+            logger.error(f"ERROR offset={val} result={result.stdout} {result.stderr}")
 
     except Exception as e:
-        print(f"ERROR calling racadm: {e}")
+        logger.error(f"ERROR calling racadm: {e}")
 
 
 # ===== MAIN LOOP =====
@@ -64,12 +72,12 @@ while True:
         temp = list(data.values())[0]
         temp = round(float(temp))
 
-        print(f"GPU temp = {temp}")
+        logger.info(f"GPU temp = {temp}")
         fails = 0
 
     except Exception as e:
         fails += 1
-        print(f"FAIL SAFE ({fails}) → MAX FAN ({e})")
+        logger.warning(f"FAIL SAFE ({fails}) → MAX FAN ({e})")
 
         if fails >= 2:
             set_offset(3)
@@ -93,7 +101,7 @@ while True:
 
     # ===== APPLY =====
     if target != last:
-        print(f"CHANGE {last} → {target} (temp={temp})")
+        logger.info(f"CHANGE {last} → {target} (temp={temp})")
 
         set_offset(target)
 
