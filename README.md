@@ -12,7 +12,9 @@ A docker compose stack that will get the GPU Temperature from the `/gpu-temp` en
 ```bash
 apt update
 apt install -y alien wget
-wget https://dl.dell.com/FOLDER05920767M/1/DellEMC-iDRACTools-Web-LX-9.4.0-3732_A00.tar.gz
+wget --header="User-Agent: Mozilla/5.0" \
+     --header="Referer: https://www.dell.com/" \
+     "https://dl.dell.com/FOLDER05920767M/1/DellEMC-iDRACTools-Web-LX-9.4.0-3732_A00.tar.gz"
 tar xvf DellEMC-iDRACTools-Web-LX-9.4.0-3732_A00.tar.gz
 cd iDRACTools
 cd racadm
