@@ -3,9 +3,9 @@ services:
     build: .
     env_file:
       - .env
+
     volumes:
       - ./data:/data
       - ./config.yaml:/config/config.yaml:ro
-      - /opt/dell:/opt/dell:ro
-      - /usr/bin/racadm:/usr/bin/racadm:ro
+
     restart: unless-stopped
