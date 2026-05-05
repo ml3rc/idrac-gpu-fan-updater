@@ -37,4 +37,4 @@ COPY app.py .
 
 RUN pip install --no-cache-dir requests pyyaml
 
-CMD ["python", "app.py"]
+CMD ["python3", "app.py"]
