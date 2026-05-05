@@ -34,6 +34,8 @@ try:
 except:
     last = 0
 
+
+
 fails = 0
 
 # ===== RACADM =====
@@ -61,6 +63,8 @@ def set_offset(val):
     except Exception as e:
         logger.error(f"ERROR calling racadm: {e}")
 
+# fix state       
+set_offset(last)
 
 # ===== MAIN LOOP =====
 while True:
