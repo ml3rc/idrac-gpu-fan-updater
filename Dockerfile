@@ -5,11 +5,14 @@ ENV DEBIAN_FRONTEND=noninteractive
 # base tools + dependencies
 RUN apt-get update
 RUN apt-get install -y \
-    wget tar rpm2cpio cpio \
+    wget tar rpm2cpio cpio
+
 RUN apt-get install -y \
-    python3 python3-pip \
+    python3 python3-pip
+
 RUN apt-get install -y \
-    libssl3 libargtable2-0 \
+    libssl3 libargtable2-0
+    
 RUN apt-get install -y \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
