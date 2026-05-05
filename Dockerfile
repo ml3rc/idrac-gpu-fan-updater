@@ -12,7 +12,7 @@ RUN apt-get install -y \
 
 RUN apt-get install -y \
     libssl3 libargtable2-0
-    
+
 RUN apt-get install -y \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
@@ -32,9 +32,14 @@ RUN tar xvf DellEMC-iDRACTools-Web-LX-9.4.0-3732_A00.tar.gz \
     && ln -sf /opt/dell/srvadmin/bin/idracadm7 /usr/bin/racadm \
     && rm -rf /tmp/iDRACTools /tmp/DellEMC-iDRACTools*
 
+RUN ln -s /usr/lib/x86_64-linux-gnu/libssl.so.3    /usr/lib/x86_64-linux-gnu/libssl.so \
+    && ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so.3 /usr/lib/x86_64-linux-gnu/libcrypto.so
+
 
 # ensure loader finds Dell libs
 ENV LD_LIBRARY_PATH=/opt/dell/srvadmin/lib64/openmanage/private
+
+
 
 WORKDIR /app
 
