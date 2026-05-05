@@ -5,6 +5,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 # base tools + dependencies
 RUN apt-get update && apt-get install -y \
     wget \
+    python3 \
+    python3-pip \
     tar \
     alien \
     libssl3 \
