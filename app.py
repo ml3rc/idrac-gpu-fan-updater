@@ -81,11 +81,10 @@ while True:
 
         if fails >= 2:
             set_offset(3)
+            last = 3
 
         time.sleep(5)
         continue
-
-    target = last
 
     # ===== HYSTERESIS =====
     target = last
