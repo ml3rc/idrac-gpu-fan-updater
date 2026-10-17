@@ -29,6 +29,12 @@ sudo ln -s /opt/dell/srvadmin/bin/idracadm7 /usr/bin/racadm
 
 ## Running
 
+Copy the environment template and fill in your iDRAC credentials:
+
+```bash
+cp .env.tmpl .env
+```
+
 To start the stack, run:
 
 ```bash
