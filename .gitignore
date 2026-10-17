@@ -1,0 +1,13 @@
+
+# IDE / user-specific and sensitive files
+.vscode/
+.vs/
+.idea/
+*.code-workspace
+*.suo
+*.user
+*.atsuo
+*.pem
+*.key
+*.pfx
+*.p12
